@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <com.kylin.progressbutton.ProgressButton
+        android:id="@+id/progress"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        app:border="2dp"
+        app:corner="0dp"
+        app:finishText="完成"
+        app:foregroundColor="@color/colorPrimary"
+        app:max="100"
+        app:progress="0"
+        app:text="下载"
+        app:textColor="#000"
+        app:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/reset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:text="重置" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <View
+            android:id="@+id/color_red"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:background="@android:color/holo_red_dark" />
+
+        <View
+            android:id="@+id/color_green"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:layout_margin="20dp"
+            android:background="@android:color/holo_green_dark" />
+
+        <View
+            android:id="@+id/color_blue"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:background="@android:color/holo_blue_dark" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:text="进度" />
+
+        <androidx.appcompat.widget.AppCompatSeekBar
+            android:id="@+id/seek_bar_progress"
+            android:layout_width="200dp"
+            android:layout_height="30dp"
+            android:max="100" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:text="圆角" />
+
+        <androidx.appcompat.widget.AppCompatSeekBar
+            android:id="@+id/seek_bar_corner"
+            android:layout_width="200dp"
+            android:layout_height="30dp"
+            android:max="15"
+            app:tickMark="@color/colorPrimary" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:text="边框" />
+
+        <androidx.appcompat.widget.AppCompatSeekBar
+            android:id="@+id/seek_bar_border"
+            android:layout_width="200dp"
+            android:layout_height="30dp"
+            android:max="5"
+            android:progress="2"
+            app:tickMark="@color/colorPrimary" />
+    </LinearLayout>
+
+
+</LinearLayout>

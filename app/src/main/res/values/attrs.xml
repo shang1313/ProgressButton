@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="ProgressButton">
+        <!--背景色-->
+        <attr name="backgroundColor" format="reference|color" />
+        <!--前景色-->
+        <attr name="foregroundColor" format="reference|color" />
+        <!--进度中文本颜色-->
+        <attr name="textColor" format="reference|color" />
+        <attr name="max" format="integer" />
+        <attr name="progress" format="integer" />
+        <attr name="textSize" format="dimension" />
+        <!--初始状态文本-->
+        <attr name="text" format="string" />
+        <!--加载完成文本-->
+        <attr name="finishText" format="string" />
+        <!--圆角-->
+        <attr name="corner" format="dimension" />
+        <!--边框宽度-->
+        <attr name="border" format="dimension" />
+    </declare-styleable>
+
+</resources>
