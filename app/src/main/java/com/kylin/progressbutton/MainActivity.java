@@ -63,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 progress = 0;
                 timer.cancel();
+                binding.progress.setProgressText(null);
                 binding.progress.setProgress(0);
             }
         });
