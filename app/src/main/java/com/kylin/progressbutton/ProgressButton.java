@@ -1,5 +1,6 @@
 package com.kylin.progressbutton;
 
+import android.animation.ArgbEvaluator;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
@@ -11,6 +12,7 @@ import android.graphics.Paint.FontMetrics;
 import android.graphics.RectF;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -31,7 +33,6 @@ public class ProgressButton extends View {
     private int state = 0;
 
     private int progress, max;
-    private int textColor;
     private float textSize;
     private int backgroundColor, foregroundColor;//背景色，前景色
     private String text, progressText, finishText;//默认文本,进度中的文本，进度完成文本
@@ -56,7 +57,6 @@ public class ProgressButton extends View {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.ProgressButton);
         this.backgroundColor = typedArray.getInteger(R.styleable.ProgressButton_backgroundColor, Color.WHITE);
         this.foregroundColor = typedArray.getInteger(R.styleable.ProgressButton_foregroundColor, Color.parseColor("#09c856"));
-        this.textColor = typedArray.getInteger(R.styleable.ProgressButton_textColor, Color.BLACK);
         this.max = typedArray.getInteger(R.styleable.ProgressButton_max, 100);
         this.progress = typedArray.getInteger(R.styleable.ProgressButton_progress, 0);
         this.text = typedArray.getString(R.styleable.ProgressButton_text);
@@ -98,7 +98,7 @@ public class ProgressButton extends View {
             textColor = Color.WHITE;
             text = TextUtils.isEmpty(this.finishText) ? "完成" : this.finishText;
         } else {
-            textColor = this.textColor;
+            textColor = getCurrentColor(progress);
             if (TextUtils.isEmpty(progressText)) {
                 int present = progress * 100 / max;
                 text = present + "%";
@@ -202,16 +202,6 @@ public class ProgressButton extends View {
     }
 
     /**
-     * 设置文本的颜色值(进度值文本颜色，初始文本颜色同按钮颜色，进度完成文本颜色为白色)
-     *
-     * @param color color
-     */
-    public void setTextColor(int color) {
-        this.textColor = color;
-        postInvalidate();
-    }
-
-    /**
      * 边框宽度dp
      *
      * @param border dp值
@@ -262,6 +252,13 @@ public class ProgressButton extends View {
         }
         // 设置进度之后，要求UI强制进行重绘
         postInvalidate();
+    }
+
+    private int getCurrentColor(int progress) {
+        float fraction = (float) progress / max;
+        Log.d("kylin", "fraction:" + fraction);
+        ArgbEvaluator evaluator = new ArgbEvaluator();
+        return (int) evaluator.evaluate(fraction, foregroundColor, Color.WHITE);
     }
 
     public int getProgress() {

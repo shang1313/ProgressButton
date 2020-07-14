@@ -17,7 +17,6 @@
         app:max="100"
         app:progress="0"
         app:text="下载"
-        app:textColor="#000"
         app:textSize="14sp" />
 
     <TextView
